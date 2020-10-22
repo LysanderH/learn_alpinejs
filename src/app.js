@@ -1,5 +1,7 @@
 import 'alpinejs'
 
+window.store = {}
+
 window.data = function () {
 	return {
 		todos: [],
@@ -96,7 +98,7 @@ window.data = function () {
 		 * @param tick
 		 * @param field
 		 */
-		startEditing(todo, tick, field) {
+		startEditing(todo, tick) {
 			todo.cachedTitle = todo.title;
 
 			if (this.todoEditing) {
@@ -105,9 +107,7 @@ window.data = function () {
 			this.todoEditing = todo;
 			todo.editing = true;
 
-			tick(setTimeout(() => {
-				field.focus()
-			}));
+			tick(() => document.getElementById(todo.id).focus())
 		},
 
 		/**

@@ -25,10 +25,17 @@
 				<li :class="{completed: todo.completed, editing: todo.editing}">
 					<div class="view">
 						<input class="toggle" type="checkbox" @click="toggleCompleted(todo)" x-model="todo.completed">
-						<label x-text="todo.title" @dblclick="startEditing(todo, $nextTick, $refs.editTodoField)"></label>
+						<label x-text="todo.title"
+							   @dblclick="startEditing(todo, $nextTick)"></label>
 						<button class="destroy" @click="removeTodo(todo)"></button>
 					</div>
-					<input class="edit" x-model="todo.title" @keyup.enter="validateEditingTodo(todo)" @keyup.escape="cancelEditingTodo(todo)" x-ref="todo.id">
+					<input class="edit"
+						   x-model="todo.title"
+						   @keyup.enter="validateEditingTodo(todo)"
+						   @keyup.escape="cancelEditingTodo(todo)"
+						   :id="todo.id"
+						   @blur="cancelEditingTodo(todo)"
+					>
 				</li>
 			</template>
 		</ul>
