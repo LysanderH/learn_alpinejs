@@ -40,13 +40,13 @@
 		<span class="todo-count"><strong x-text="activeTodosCount"></strong> <span x-text="activeTodosCount === 1 ? 'item' : 'items'"></span> left</span>
 		<ul class="filters">
 			<li>
-				<a class="selected" href="#/" @click.prevent="filter='all'">All</a>
+				<a :class="{selected:filter==='all'}" href="#/" @click.prevent="filter='all'">All</a>
 			</li>
 			<li>
-				<a href="#/active" @click.prevent="filter='active'">Active</a>
+				<a href="#/active" :class="{selected:filter==='active'}" @click.prevent="filter='active'">Active</a>
 			</li>
 			<li>
-				<a href="#/completed" @click.prevent="filter='completed'">Completed</a>
+				<a href="#/completed" :class="{selected:filter==='completed'}" @click.prevent="filter='completed'">Completed</a>
 			</li>
 		</ul>
 		<!-- Hidden if no completed items are left ↓ -->
