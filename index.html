@@ -36,11 +36,8 @@
 			</template>
 		</ul>
 	</section>
-	<!-- This footer should hidden by default and shown when there are todos -->
 	<footer class="footer" x-show="todos.length">
-		<!-- This should be `0 items left` by default -->
 		<span class="todo-count"><strong x-text="activeTodosCount"></strong> <span x-text="activeTodosCount === 1 ? 'item' : 'items'"></span> left</span>
-		<!-- Remove this if you don't implement routing -->
 		<ul class="filters">
 			<li>
 				<a class="selected" href="#/" @click.prevent="filter='all'">All</a>
@@ -53,7 +50,7 @@
 			</li>
 		</ul>
 		<!-- Hidden if no completed items are left ↓ -->
-		<button class="clear-completed">Clear completed</button>
+		<button class="clear-completed" x-show="completedTodosCount" @click="todos = activeTodos">Clear completed</button>
 	</footer>
 </section>
 <footer class="info">
