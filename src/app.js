@@ -18,17 +18,11 @@ window.data = function () {
 			return this.completedTodos.length;
 		},
 		get filteredTodos() {
-			switch (this.filter) {
-				case "all":
-					return this.todos;
-					break;
-				case 'completed':
-					return this.completedTodos;
-					break;
-				case 'active':
-					return this.activeTodos;
-					break;
-			}
+			return {
+				all:this.todos,
+				active: this.activeTodos,
+				completed: this.completedTodos
+			}[this.filter]
 		},
 		addTodo() {
 			if (this.newTodoTitle.trim()) {
