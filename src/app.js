@@ -19,6 +19,12 @@ window.data = function () {
 		},
 		toggleCompleted(todo) {
 			todo.completed = !todo.completed;
-		}
+		},
+		get activeTodos() {
+			return this.todos.filter(item => !item.completed);
+		},
+		get activeTodosCount(){
+			return this.todos.filter(item => !item.completed).length;
+		},
 	}
 }
